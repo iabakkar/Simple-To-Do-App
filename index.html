@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List Assignment</title>
+
+    <style>
+        body {
+            background-color: lightblue;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 35px;
+            font-weight: bolder;
+        }
+
+        .todoBox {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 40%;
+        }
+
+        #todoText {
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #2B6BEC;
+            width: 80%;
+            margin-right: 10px;
+            outline: none;
+            font-family: 'Arial Narrow', Arial, sans-serif;
+            /* font-size: 18px; */
+            font-weight: 800;
+        }
+
+        .unoderlist {
+            padding: 0px;
+        }
+
+        .addbtn,
+        .deleteBtn {
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #2B6BEC;
+            color: white;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+
+        }
+
+        .listItem {
+            list-style-type: none;
+            background-color: #C5E2E6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid lightgray;
+            margin-bottom: 5px;
+            font-family: 'Arial Narrow', Arial, sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    // step 1
+    let heading = document.createElement("h1")
+    heading.textContent = "Todo List"
+    document.body.prepend(heading)
+
+    // step 2 
+    let div = document.createElement("div")
+    div.classList = "todoBox"
+
+    document.body.append(div)
+
+    // step 3
+    let input = document.createElement("input")
+    input.type = "text";
+    input.id = "todoText"
+    input.placeholder = "Enter Todo"
+    div.append(input)
+
+
+    // step 4
+    let addBtn = document.createElement("button")
+    addBtn.textContent = "Add"
+    addBtn.classList = "addbtn"
+    div.append(addBtn)
+
+
+    // step 5
+    let unOrderList = document.createElement("ul")
+    unOrderList.classList = "unoderlist"
+    div.append(unOrderList)
+
+
+
+
+
+    // step 6
+
+
+    addBtn.addEventListener("click", () => {
+
+        if (input.value.trim() == "") {
+            return
+        }
+
+        let listItem = document.createElement("li");
+        listItem.classList = "listItem"
+        listItem.textContent = input.value;
+
+        let deletBtn = document.createElement("button")
+        deletBtn.textContent = "Delete"
+        deletBtn.classList = "deleteBtn"
+        listItem.append(deletBtn)
+
+        unOrderList.appendChild(listItem)
+
+
+        input.value = ""
+
+
+        deletBtn.addEventListener("click", () => {
+            listItem.remove()
+        })
+    })
+
+
+
+</script>
+
+</html>
